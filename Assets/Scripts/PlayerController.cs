@@ -3,27 +3,27 @@ using Vector3 = UnityEngine.Vector3;
 
 public class PlayerController : MonoBehaviour
 {
-    public float vehicleSpeed = 20;
-    public float vehicleTurnSpeed = 25;
-    public float horizontalInput;
-    public float verticalInput;
+    // Vehicle speed in units per second
+    private const float VehicleSpeed = 20;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-    }
+    // Vehicle turn speed in degrees per second
+    private const float VehicleTurnSpeed = 25;
+
+    // Variables to store player input
+    private float _horizontalInput;
+    private float _verticalInput;
 
     // Update is called once per frame
     void Update()
     {
         // We get the horizontal and vertical input from the player
-        horizontalInput = Input.GetAxis("Horizontal");
-        verticalInput = Input.GetAxis("Vertical");
+        _horizontalInput = Input.GetAxis("Horizontal");
+        _verticalInput = Input.GetAxis("Vertical");
 
-        // We'll move the vehicle forward
-        transform.Translate(Vector3.forward * (Time.deltaTime * vehicleSpeed * verticalInput));
+        // Move the vehicle based on the vertical input
+        transform.Translate(Vector3.forward * (Time.deltaTime * VehicleSpeed * _verticalInput));
 
         // And turn the vehicle based on the turn speed and horizontal input
-        transform.Rotate(Vector3.up * (Time.deltaTime * vehicleTurnSpeed * horizontalInput));
+        transform.Rotate(Vector3.up * (Time.deltaTime * VehicleTurnSpeed * _horizontalInput));
     }
 }
