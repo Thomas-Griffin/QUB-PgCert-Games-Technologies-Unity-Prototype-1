@@ -4,7 +4,7 @@ using Vector3 = UnityEngine.Vector3;
 public class PlayerController : MonoBehaviour
 {
     public float vehicleSpeed = 20;
-    public float vehicleTurnSpeed = 10;
+    public float vehicleTurnSpeed = 25;
     public float horizontalInput;
     public float verticalInput;
 
@@ -24,6 +24,6 @@ public class PlayerController : MonoBehaviour
         transform.Translate(Vector3.forward * (Time.deltaTime * vehicleSpeed * verticalInput));
 
         // And turn the vehicle based on the turn speed and horizontal input
-        transform.Translate(Vector3.right * (Time.deltaTime * vehicleTurnSpeed * horizontalInput));
+        transform.Rotate(Vector3.up * (Time.deltaTime * vehicleTurnSpeed * horizontalInput));
     }
 }
